@@ -1,0 +1,330 @@
+package control;
+
+import java.util.Scanner;
+
+import calculadora.CalculadoraIMC;
+import tests.TesteCalculadoraIMC;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		System.out.println("Alô, mundo!");
+		TesteCalculadoraIMC testeCalcular = new TesteCalculadoraIMC();
+		int idade;
+		String sexo;
+		double altura, peso;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Informe a idade:");
+		idade = sc.nextInt();
+		System.out.println("Informe o sexo:");
+		sexo = sc.next();
+		System.out.println("Informe a altura:");
+		altura = sc.nextDouble();
+		System.out.println("Informe o peso:");
+		peso = sc.nextDouble();
+		while (idade < 18) {
+			System.out.println("Não pode idade abaixo de 18.");
+			idade = sc.nextInt();
+		}
+		
+		//IMC
+		CalculadoraIMC calculaIMC = new CalculadoraIMC();
+		System.out.println("Cálculo do IMC: " + calculaIMC.calcularIMC(49.0, 1.70, 19, "masculino"));
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+package tests;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import calculadora.CalculadoraIMC;
+
+public class TesteCalculadoraIMC {
+	
+    CalculadoraIMC calc;
+    
+    @Before
+    public void setup() {
+    	calc = new CalculadoraIMC();
+    }
+    
+    @Test
+    public void testeAdultoBaixoPesoMuitoGrave() {
+    	Assert.assertEquals("Baixo peso muito grave", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoBaixoPesoGrave() {
+    	Assert.assertEquals("Baixo peso grave", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoBaixoPeso() {
+    	Assert.assertEquals("Baixo peso", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoPesoNormal() {
+    	Assert.assertEquals("Peso normal", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoSobrepeso() {
+    	Assert.assertEquals("Sobrepeso", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoObesidadeGrau1() {
+    	Assert.assertEquals("Obesidade de grau 1", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoObesidadeGrau2() {
+    	Assert.assertEquals("Obesidade de grau 2", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoObesidadeGrau3() {
+    	Assert.assertEquals("Obesidade de grau 3", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    //Gestentes
+    public void testeAdultoBaixoPesoGestacional() {
+    	Assert.assertEquals("Baixo peso gestacional", calc.calcularIMC(49.0, 1.70, 36, "masculino"));
+    }
+    
+    public void testeAdultoPesoGestacionalNormal() {
+    	Assert.assertEquals("Peso gestacional normal", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoSobrepesoGestacional() {
+    	Assert.assertEquals("Sobrepeso gestacional", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoObesidadeGestacional() {
+    	Assert.assertEquals("Obesidade gestacional", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultaEstaComPesoBaixo() {
+    	Assert.assertEquals("Adulta está com peso baixo", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    //Pessoas com 65 anos ou mais
+    //Mulheres
+    public void testeAdultaEstaComPesoNormal() {
+    	Assert.assertEquals("Adulta está com peso normal", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultaEstaComSobrepeso() {
+    	Assert.assertEquals("Adulta está com sobrepeso", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultaEstaComObesidadeGrau1() {
+    	Assert.assertEquals("Adulta está com obesidade de grau 1", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultaEstaComObesidadeGrau2() {
+    	Assert.assertEquals("Adulta está com obesidade de grau 2", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultaEstaComObesidadeGrau3() {
+    	Assert.assertEquals("Adulta está com obesidade de grau 3", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    //Homens
+    public void testeAdultoEstaComPesoBaixo() {
+    	Assert.assertEquals("Adulto está com peso baixo", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoEstaComPesoNormal() {
+    	Assert.assertEquals("Adulto está com peso normal", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoEstaComSobrepeso() {
+    	Assert.assertEquals("Adulto está com sobrepeso", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoEstaComObesidadeGrau1() {
+    	Assert.assertEquals("Adulto está com peso baixo", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoEstaComObesidadeGrau2() {
+    	Assert.assertEquals("Adulto está com peso baixo", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+    
+    public void testeAdultoEstaComObesidadeGrau3() {
+    	Assert.assertEquals("Adulto está com peso baixo", calc.calcularIMC(49.0, 1.70, 19, "masculino"));
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+
+package calculadora;
+
+public class CalculadoraIMC {
+    
+	public double calcularIMC(double peso, double altura, int idade, String sexo) {
+		double imc = peso / (altura * altura);
+	    
+		//Baixo peso muito grave
+		if (imc < 16.00) {
+		    System.out.println("Baixo peso muito grave.");
+		}
+		
+		//Baixo peso grave
+		if (imc >= 16.00 || imc <= 16.99) {
+	    	System.out.println("Peso baixo e grave.");
+	    }
+		
+		if (imc >= 18.50 || imc <= 24.99) {
+		    System.out.println("Peso normal.");
+		}
+	    
+		//Obesidade de grau 1
+		if (imc >= 30.00 || imc <= 34.99) {
+		    System.out.println("Obesidade de grau 1.");
+		}
+		
+		//Obesidade de grau 2
+		if (imc >= 35.00 || imc <= 39.99) {
+		    System.out.println("Obesidade de grau 2.");
+		}
+		
+		//Obesidade de grau 3
+		if (imc > 40.00) {
+		    System.out.println("Obesidade de grau 3.");
+		}
+		
+		//Gestantes
+		
+		//Baixo peso
+		if (sexo == "feminino" && imc < 18.50) {
+		    System.out.println("Baixo peso gestacional.");
+		}
+		else if (sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Peso normal
+		if (sexo == "feminino" && imc >= 18.50 || imc <= 24.99) {
+		    System.out.println("Peso gestacional normal.");
+		}
+		else if (sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Sobrepeso
+		if (sexo == "feminino" && imc >= 25.00 || imc <= 29.99) {
+		    System.out.println("Sobrepeso gestacional.");
+		}
+		else if (sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade
+		if (sexo == "feminino" && imc > 30.00) {
+			System.out.println("Obesidade.");
+		}
+		else if (sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Pessoas com 65 anos ou mais
+		//Mulheres
+		//Peso baixo
+		if (idade >= 65 && sexo == "feminino" && imc < 21.99) {
+			System.out.println("Peso está baixo.");
+		}
+		else if (idade < 65 || sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Peso normal
+		if (idade >= 65 && sexo == "feminino" && imc >= 22.00 || imc <= 27.00) {
+			System.out.println("Peso está normal.");
+		}
+		else if (idade < 65 || sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Sobrepeso
+		if (idade >= 65 && sexo == "feminino" && imc >= 27.10 || imc <= 32.00) {
+			System.out.println("Está com sobrepeso.");
+		}
+		else if (idade < 65 || sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade de grau 1
+		if (idade >= 65 && sexo == "feminino" && imc >= 32.10 || imc <= 37.00) {
+			System.out.println("Está com obesidade de grau 1.");
+		}
+		else if (idade < 65 || sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade de grau 2
+		if (idade >= 65 && sexo == "feminino" && imc >= 37.10 || imc <= 41.99) {
+			System.out.println("Está com obesidade de grau 2.");
+		}
+		else if (idade < 65 || sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade de grau 3
+		if (idade >= 65 && sexo == "feminino" && imc > 42.00) {
+			System.out.println("Está com obesidade de grau 3.");
+		}
+		else if (idade < 65 || sexo == "masculino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//homens
+		//Peso baixo
+		if (idade >= 65 && sexo == "masculino" && imc < 21.99) {
+			System.out.println("Peso está baixo.");
+		}
+		else if (idade < 65 || sexo == "feminino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Peso normal
+		if (idade >= 65 && sexo == "masculino" && imc >= 22.00 || imc <= 27.00) {
+			System.out.println("Peso está normal.");
+		}
+		else if (idade < 65 || sexo == "feminino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Sobrepeso
+		if (idade >= 65 && sexo == "masculino" && imc >= 27.10 || imc <= 30.00) {
+			System.out.println("Está com sobrepeso.");
+		}
+		else if (idade < 65 || sexo == "feminino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade de grau 1
+		if (idade >= 65 && sexo == "masculino" && imc >= 30.10 || imc <= 35.00) {
+			System.out.println("Está com obesidade de grau 1.");
+		}
+		else if (idade < 65 || sexo == "feminino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade de grau 2
+		if (idade >= 65 && sexo == "masculino" && imc >= 35.10 || imc <= 39.99) {
+			System.out.println("Está com obesidade de grau 2.");
+		}
+		else if (idade < 65 || sexo == "feminino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		//Obesidade de grau 3
+		if (idade >= 65 && sexo == "masculino" && imc > 40.00) {
+			System.out.println("Está com obesidade de grau 3.");
+		}
+		else if (idade < 65 || sexo == "feminino") {
+			System.out.println("Não se aplica.");
+		}
+		
+		return imc;
+	}
+}
